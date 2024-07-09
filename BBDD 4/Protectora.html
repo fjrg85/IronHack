@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protectora de Animales</title>
+</head>
+<body>
+    <script src="index.js" type="module"></script>
+    <h1>Información Animal</h1>
+    <form id="addAnimal" action="#">
+        <label for="nombre">Nombre mascota</label><br>
+        <input type="text" id="nombre" name="nombre"><br>
+        <label for="tipo">Tipo mascota</label><br>
+        <input type="text" id="tipo" name="tipo"><br>
+        <label for="Anionac">Año nacimiento</label><br>
+        <input type="number" id="anionac" name="anionac" maxlength="4"><br>
+        <button type="submit" id="enviar">Enviar</button>
+    </form>
+    <div id="datos" hidden="true">
+        <button id="enviarInfo" type="button">Animal</button>
+        <br>
+        <div id="fullData" hidden="true"></div>
+    </div>
+</body>
+</html>
