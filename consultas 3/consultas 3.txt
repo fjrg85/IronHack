@@ -1,0 +1,9 @@
+SELECT * FROM `reserva` WHERE reserva_precio >= 40;
+SELECT * FROM `reserva` WHERE reserva_precio BETWEEN 30 AND 100;
+SELECT * FROM `reserva` WHERE reserva_email NOT LIKE '%@%';
+SELECT * FROM `reserva` ORDER BY reserva_precio DESC, reserva_nombre ASC;
+
+SELECT * FROM `ciudades` WHERE Poblacion BETWEEN 500000 AND 1000000;
+SELECT * FROM `ciudades` WHERE CodigoPais LIKE 'A%';
+SELECT * FROM `ciudades` ORDER BY Poblacion DESC LIMIT 10;
+SELECT * FROM `ciudades` WHERE CodigoPais = 'ESP' AND Poblacion < 1000000;
