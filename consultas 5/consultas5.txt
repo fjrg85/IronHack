@@ -1,0 +1,41 @@
+1.
+SELECT UPPER(`clientes`.`Nombre`), UPPER(`clientes`.`Apellidos`)
+FROM `clientes` 
+
+2.
+SELECT `clientes`.`Nombre`, `clientes`.`Apellidos`
+FROM `clientes` 
+ORDER BY LENGTH(`clientes`.`Nombre`) DESC
+LIMIT 1;
+
+3.
+SELECT TRIM(`clientes`.`Nombre`), TRIM(`clientes`.`Apellidos`)
+FROM `clientes`
+
+4.
+SELECT `productos`.`Producto`, `productos`.`Precio`
+FROM `productos` 
+ORDER BY ABS(210 - `productos`.`Precio`) ASC
+LIMIT 1;
+
+5.
+SELECT `productos`.`Producto`, ROUND(`productos`.`Precio`)
+FROM `productos`
+
+6.
+SELECT `productos`.`Producto`
+FROM `productos`
+WHERE MOD(`productos`.`Precio`, 2) = 0;
+
+7.
+SELECT `empleados`.`Empleado`, `empleados`.`Fecha_alta`
+FROM `empleados`
+WHERE YEAR(NOW()) -  YEAR(`empleados`.`Fecha_alta`) < 3;
+
+8.
+SELECT `empleados`.`Empleado`, (YEAR(NOW()) -  YEAR(`empleados`.`Fecha_alta`)) AS `AÑO EMPRESA`
+FROM `empleados`
+
+9.
+SELECT `empleados`.`Empleado`,DATE_FORMAT( `empleados`.`Fecha_alta`,'%e de %M de %Y')
+FROM `empleados`
