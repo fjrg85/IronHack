@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <!-- Cargamos el archivo css y js del lado del cliente -->
+    <link rel="stylesheet" href="resources/css/style.css">
+    <script src="/resources/js/funcionescliente.js" defer></script>
+</head>
+<body>
+    <!-- 
+    En este ejemplo cargamos ejecutamos la función sumar en el servidor y la función multiplicar en el cliente
+    Ambas formas serían correctas pero son ejecutadas de manera totalmente diferentes.
+
+    -- La función sumar al ejecutarse en el servidor, nos renderiza de nuevo la página, lo cual hace que se cargue de nuevo, 
+    perdiendo por ejemplo, los valores introducidos en los inputs. 
+    Al cargarse de nuevo la página, en la primera visualización no es necesario por ejemplo cargar el h2 donde se va a mostrar el resultado
+
+    -- La función multiplicación al ejecutarse en el cliente, no recarga la página. El código javascript ha llegado al navegador y se realiza
+    desde éste las funciones a las que llamemmos sin hacer ninguna petición al servidor. En este caso si tenemos cargado de entrada el h2 aunque sin
+    contenido. 
+    Tampoco se perderían en este caso los valores introducidos en los inputs
+    -->
+
+    
+    <div class="contenedor2">
+        <h1>Panel de administración</h1>
+        <!-- comprueba si login es igual a true -->
+        <% if (login) { %>                
+            <h1>Usuario conectado: <br><strong><%= name %></strong></h1>   <!-- importa el valor de name pasado en el objeto de render -->                
+            <a href="logout" class="a-logout">Cerrar sesión</a>
+            <div class="login-form">
+                <h1>Suma de números del lado del servidor</h1>
+                <form action="suma" method="post">
+                    <input type="number" name="num1" id="num1" placeholder="num1" required>
+                    <input type="number" name="num2" id="num2" placeholder="num2" required>
+                    <br>
+                    <br>
+                    <input type="submit" class="btn-login" value="Sumar">
+                </form>
+                <% if (total != '0') { %> <!-- comprueba si total es diferente de 0 -->
+                    <h2>Total de la suma: <%= total %>  </h2>
+                <% } %>
+            </div>
+
+            <div class="login-form">
+                <h1>Multiplicación de números del lado del cliente</h1>
+                <form>
+                    <input type="number" name="nume1" id="nume1" placeholder="nume1" required>
+                    <input type="number" name="nume2" id="nume2" placeholder="nume2" required>
+                </form>
+                <br>
+                <button onclick="multiplicar()" class="btn-login">Multiplicar</button>
+                <h2 id="total"></h2>
+        
+            </div>
+        <%} else { %>
+            <h1><strong><%= name %></strong></h1>   
+            <a href="login" class="a-login">Iniciar sesión</a>
+        <% } %>
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</body>
+</html>
