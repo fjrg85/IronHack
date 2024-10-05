@@ -1,0 +1,34 @@
+CREATE TABLE `bebida` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `nombre` varchar(50) NOT NULL,
+ `precio` float NOT NULL,
+ PRIMARY KEY (`id`)
+)
+CREATE TABLE `comanda` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `fecha_creacion` datetime NOT NULL,
+ `id_plato` int(11) NOT NULL,
+ `cantidad_plato` int(11) NOT NULL,
+ `id_bebida` int(11) NOT NULL,
+ `cantidad_bebida` int(11) NOT NULL,
+ PRIMARY KEY (`id`),
+ KEY `id_plato` (`id_plato`),
+ KEY `id_bebida` (`id_bebida`),
+ CONSTRAINT `id_bebida` FOREIGN KEY (`id_bebida`) REFERENCES `bebida` (`id`),
+ CONSTRAINT `id_plato` FOREIGN KEY (`id_plato`) REFERENCES `plato` (`id`)
+) 
+CREATE TABLE `ingrediente` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `nombre` int(11) NOT NULL,
+ PRIMARY KEY (`id`)
+)
+CREATE TABLE `plato` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `nombre` varchar(50) NOT NULL,
+ `precio` float NOT NULL,
+ `fecha_creacion` datetime NOT NULL,
+ `id_ingrediente` int(11) NOT NULL,
+ PRIMARY KEY (`id`),
+ KEY `id_ingrediente` (`id_ingrediente`),
+ CONSTRAINT `id_ingrediente` FOREIGN KEY (`id_ingrediente`) REFERENCES `ingrediente` (`id`)
+)
