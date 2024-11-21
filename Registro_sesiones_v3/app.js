@@ -7,8 +7,11 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
 //3 - cargamos dotenv y le asignamos el archivo para las variables de entorno
-const dotenv = require('dotenv');
-dotenv.config({path: './env/.env'});
+if(process.env.NODE_ENV != "produccion"){
+    const dotenv = require('dotenv');
+    dotenv.config({path: './env/.env'});
+}
+
 
 //4 - cargamos el directorio public, cada vez que llamemos a resources estaremos cargando el directorio public
 //al utilizar el __dirname podemos mover el proyecto de carpeta y sin tener que actualizar las rutas
@@ -22,7 +25,8 @@ app.set('view engine', 'ejs');
 //const bcriptjs = require('bcryptjs')
 
 //7 - variables de sesión. Cargamos la sesion y establecemos la clave
-const session = require('express-session');
+//const session = require('express-session');
+const session = require('cookie-session');
 app.use(session({
     secret: 'secret',
     resave: true,
