@@ -45,7 +45,7 @@ app.use(function(req, res, next) {
 
 
 //creamos el servidor
-app.listen (3000, (req,res)=>{
-    console.log('Conexión establecida con el servidor http://localhost:3000/');
+app.listen (process.env.PORT, (req,res)=>{
+    console.log('Conexión establecida con el servidor http://localhost:'+ process.env.PORT +'/');
 })
 
