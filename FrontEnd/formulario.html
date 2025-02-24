@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<!--    -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <title>Formulario básico HTML5</title>
+</head>
+<body class="container">
+    <form method="POST" action="https://request-data.onrender.com/register">
+        <fieldset>
+            <label for="nombre">Nombre </label>
+            <input type="text" required maxlength="50" placeholder="Juan" name="nombre" id="nombre" required>
+        </fieldset>
+        <fieldset>
+            <label for="edad">Edad </label>
+            <input type="number" required max="99" min="18" placeholder="24" name="edad" id="edad" required>
+        </fieldset>
+        <fieldset>
+            <label for="dni">DNI </label>
+            <input type="text" required maxlength="9" placeholder="DNI" name="dni" id="dni" pattern="\d{8}[A-Z]{1}">
+        </fieldset>
+        <fieldset>
+            <label for="city">Ciudad de origen </label>
+            <input type="text" required maxlength="100" placeholder="Barcelona" name="city" id="city" required>
+        </fieldset>
+        <fieldset>
+            <label for="trayecto">Tipo de transporte </label>
+            <select name="trayecto" id="trayecto" required>
+                <option value="1" selected>A pie</option>
+                <option value="2">Transporte público</option>
+                <option value="3">Transporte privado</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <label for="objetivos">Objetivos del curso </label>
+            <textarea name="objetivos" rows="10" cols="30">
+            </textarea>
+        </fieldset>
+        <input type="submit" class="submit" id="submit" value="Enviar" />
+    </form>
+</body>
+</html>
